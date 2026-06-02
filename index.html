@@ -238,6 +238,7 @@ body {
 .chain-item p { font-size: 15px; line-height: 1.5; }
 
 .chain-col.right .chain-item { transform: translateX(12px); }
+.chain-col.right { background: var(--dark); }
 .chain-col.right .chain-items { background: var(--dark); }
 .chain-col.right .chain-item p { color: rgba(244,241,235,0.85); }
 .chain-col.right .chain-item { border-bottom-color: #2a2825; }
@@ -610,6 +611,45 @@ footer p {
   letter-spacing: 0.05em;
 }
 
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--ink);
+  padding: 10px 0;
+}
+.topbar .container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(244,241,235,0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.topbar-link:hover { color: var(--paper); }
+.topbar-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+.copy-email { cursor: pointer; position: relative; }
+.copy-email .copied {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 24px;
+  background: var(--accent);
+  color: white;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.copy-email.active .copied { display: block; }
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
@@ -644,6 +684,21 @@ footer p {
 </head>
 <body>
 
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <a href="https://t.me/akracon" class="topbar-link" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 14.351l-2.95-.924c-.64-.203-.654-.64.136-.953l11.527-4.448c.535-.19 1.003.131.679.222z"/></svg>
+      @akracon
+    </a>
+    <span class="topbar-link copy-email" onclick="copyEmail(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      start@do-digital.ru
+      <span class="copied">Скопировано</span>
+    </span>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="container">
@@ -667,7 +722,7 @@ footer p {
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
         <h4>Исследование аудитории</h4>
-        <p>JTBD-интервью, ABC-сегментация, понимание того, кто реально платит и почему.</p>
+        <p>JTBD-интервью, ABC-сегментация, понимание болей и триггеров приоритетных сегментов</p>
       </div>
 
       <div class="tile">
@@ -682,16 +737,16 @@ footer p {
         <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/>
         </svg>
-        <h4>Growth-гипотезы</h4>
-        <p>Ищем, где бизнес может расти: продукт, аудитория, канал, оффер. Формулируем гипотезы, приоритизируем, проверяем.</p>
+        <h4>Офферы для ЛПР и рынка</h4>
+        <p>Формируем приоритетные офферы для рекламы и коммуникаций. С учетом B2B-специфики, структуры ЛПР и знаний JTBD</p>
       </div>
 
       <div class="tile">
         <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
-        <h4>Поиск product-market fit</h4>
-        <p>Где продукт совпадает с реальным запросом рынка — и как это зафиксировать.</p>
+        <h4>Growth-маркетинг</h4>
+        <p>Выстраивание процессов. Работа с гипотезами дает бизнесу ясность, энергию изменений и рост.</p>
       </div>
 
       <div class="tile">
@@ -706,8 +761,8 @@ footer p {
         <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M3 6h18M3 12h12M3 18h8"/><path d="M16 16l2 2 4-4"/>
         </svg>
-        <h4>Структура предложения и воронки</h4>
-        <p>Что предлагать клиенту первым, что вторым. Как выстроить путь от лёгкого первого шага до основного продукта.</p>
+        <h4>Структура и воронка продаж</h4>
+        <p>Анализ CJM клиента. Как выстроить путь от лёгкого первого шага до основного продукта. Вебинары, трипвайеры, доп материалы</p>
       </div>
 
       <div class="tile tile-wide">
@@ -716,7 +771,7 @@ footer p {
           <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         <h4>Партнёр в маркетинге — для команды и директора</h4>
-        <p>Думающий участник, которого можно взять на встречу с командой или собственником. Полезен и для директора по маркетингу как «вторая голова» по сложным задачам — и для бизнеса как взгляд снаружи.</p>
+        <p>Думающий участник, которого можно взять на встречу с командой или собственником. Полезен как собственнику проекта, так и директору по маркетингу как «вторая голова» по сложным задачам — и для бизнеса как взгляд снаружи.</p>
       </div>
 
     </div>
@@ -738,23 +793,23 @@ footer p {
         <div class="chain-items">
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Как сейчас упакован продукт и что говорит посадочная</p>
+            <p>Как сейчас упакован продукт: посадка, каналы дистрибуции, кто и как покупает</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Кому показывается реклама и с каким сообщением</p>
+            <p>Анализ сегментов и болей. Понимаем ли кто наш клиент? Как найти масштаб и смежные сегменты</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Какие каналы уже пробовали и что сработало</p>
+            <p>Аудит каналов привлечения. Как их расширить и найти новые с учетом экономики проекта</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Кто реально покупает и почему — по данным или интервью</p>
+            <p>Работы с гипотезами. Регулярность, глубина, скорость, стоимость — выстраивание процессов с учетом этих факторов</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Что хотят запустить и какая задача стоит сейчас</p>
+            <p>Планирование работ — если не знаете с чего начать или хотите реанимировать маркетинг/рекламу</p>
           </div>
         </div>
       </div>
@@ -772,11 +827,11 @@ footer p {
         <div class="chain-items">
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Понятно, кому и с каким сообщением запускать рекламу</p>
+            <p>Ясность и приоритизация работ для бизнеса в рамках задач маркетинга и рекламы</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Посадочная страница скорректирована под конкретный сегмент</p>
+            <p>Есть конкретные шаги — что, для чего и зачем делаем</p>
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
@@ -788,7 +843,11 @@ footer p {
           </div>
           <div class="chain-item">
             <div class="chain-dot"></div>
-            <p>Есть конкретный следующий шаг — не список рекомендаций</p>
+            <p>Лучше понимаем свои сегменты и почему наш продукт покупают (или не покупают)</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Формируем пивоты, новые сценарии, находим product marketing fit проекта</p>
           </div>
         </div>
       </div>
@@ -826,7 +885,7 @@ footer p {
       <div class="entry-card">
         <div class="entry-num">04</div>
         <h4>Консультации</h4>
-        <p>Разговор про маркетинг и бизнес: что работает, что нет, куда двигаться дальше.</p>
+        <p>Коммуникации про маркетинг и бизнес: что работает, что нет, куда двигаться дальше.</p>
       </div>
 
     </div>
@@ -882,11 +941,10 @@ footer p {
     <h2 class="sec-title">B2B-бизнес с тракцией</h2>
     <p class="who-desc">Работаем с бизнесом, у которого уже есть клиенты и понимание откуда деньги — даже если небольшое.</p>
     <div class="who-tags">
-      <span class="who-tag">SaaS-платформы</span>
-      <span class="who-tag">Учебные центры</span>
-      <span class="who-tag">Tech-продукты</span>
-      <span class="who-tag">B2B-услуги</span>
-      <span class="who-tag">Новые продукты внутри компании</span>
+      <span class="who-tag">ИТ-продукты</span>
+      <span class="who-tag">Мероприятия</span>
+      <span class="who-tag">B2B с высоким чеком</span>
+      <span class="who-tag">Консалтинг</span>
     </div>
   </div>
 </section>
@@ -918,7 +976,7 @@ footer p {
 </section>
 
 <!-- CREDENTIALS -->
-<section class="creds">
+<section class="creds" style="display:none">
   <div class="container">
     <div class="sec-label">Бэкграунд</div>
     <h2 class="sec-title">Обучение и инструменты</h2>
@@ -1011,7 +1069,13 @@ footer p {
     <div class="sec-label">Начать</div>
     <h2 class="sec-title">Расскажите про свою задачу</h2>
     <p>Поймём, с чего начать и какой формат подходит под вашу ситуацию.</p>
-    <a href="mailto:contact@krokon.ru" class="hero-cta">Написать нам</a>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;">
+      <a href="https://t.me/akracon" class="hero-cta" target="_blank">Написать в Telegram</a>
+      <span class="hero-cta copy-email" style="background:transparent; color:var(--ink); border:2px solid var(--ink); cursor:pointer;" onclick="copyEmail(this)">
+        start@do-digital.ru
+        <span class="copied" style="top:52px;">Скопировано</span>
+      </span>
+    </div>
   </div>
 </section>
 
@@ -1023,6 +1087,14 @@ footer p {
 </footer>
 
 <script>
+// ── COPY EMAIL ──
+function copyEmail(el) {
+  navigator.clipboard.writeText('start@do-digital.ru').then(() => {
+    el.classList.add('active');
+    setTimeout(() => el.classList.remove('active'), 2000);
+  });
+}
+
 // ── EDIT MODE ──
 (function() {
   const btn = document.createElement('button');
@@ -1049,7 +1121,12 @@ footer p {
     btn.textContent = editing ? '✅ Готово' : '✏️ Редактировать';
     btn.style.background = editing ? '#c94d1a' : '#111';
     if (!editing) {
-      alert('Изменения видны только в браузере. Чтобы сохранить — скопируй нужный текст и скажи мне что поменять.');
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'index.html';
+      a.click();
     }
   });
 
