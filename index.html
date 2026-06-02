@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>до digital — Маркетинг до рекламы</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111010;
+  --paper: #f4f1eb;
+  --accent: #c94d1a;
+  --accent-dim: #f0ddd4;
+  --muted: #78726a;
+  --border: #ddd8cf;
+  --dark: #1a1917;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Onest', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 100px 0 90px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.brand .do { color: var(--muted); font-weight: 400; }
+.brand .dig { color: var(--ink); }
+
+.hero h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(34px, 5.5vw, 64px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 700px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.hero-cta:hover { background: #2a2825; }
+.hero-cta::after { content: '→'; }
+
+/* ── SECTION LABELS ── */
+.sec-label {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.sec-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 580px;
+  margin-bottom: 52px;
+}
+
+/* ── WHAT WE DO ── */
+.what {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.tile {
+  background: var(--paper);
+  padding: 28px 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.tile.vis { opacity: 1; transform: translateY(0); }
+
+.tile-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.tile h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.tile p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.tile-wide {
+  grid-column: span 2;
+}
+
+/* ── CHAIN: works → results ── */
+.chain {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.chain-layout {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid var(--border);
+}
+
+.chain-col {
+  padding: 0;
+}
+
+.chain-header {
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chain-header-label {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chain-col.right .chain-header { background: var(--ink); }
+.chain-col.right .chain-header-label { color: rgba(244,241,235,0.5); }
+
+.chain-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+}
+
+.chain-arrow svg { width: 20px; height: 20px; color: white; }
+
+.chain-items { padding: 8px 0; }
+
+.chain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.chain-item.vis { opacity: 1; transform: translateX(0); }
+.chain-item:last-child { border-bottom: none; }
+
+.chain-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.chain-item p { font-size: 15px; line-height: 1.5; }
+
+.chain-col.right .chain-item { transform: translateX(12px); }
+.chain-col.right .chain-items { background: var(--dark); }
+.chain-col.right .chain-item p { color: rgba(244,241,235,0.85); }
+.chain-col.right .chain-item { border-bottom-color: #2a2825; }
+.chain-col.right .chain-dot { background: var(--accent); }
+
+/* ── FORMATS ── */
+.formats {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.formats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.format {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.format:last-child { border-bottom: none; }
+
+.format-meta {
+  padding: 32px 28px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.format-tag {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.format-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.format-body {
+  padding: 32px 32px;
+}
+
+.format-body p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.format-body p:last-child { margin-bottom: 0; }
+
+.format-note {
+  font-size: 13px !important;
+  color: var(--muted) !important;
+  font-style: italic;
+}
+
+/* ── ENTRY TASKS ── */
+.entry {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.entry-card {
+  background: var(--paper);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.entry-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.entry-card h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.entry-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.entry-result {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+/* ── WHO ── */
+.who {
+  padding: 100px 0;
+  background: var(--dark);
+  color: var(--paper);
+  border-bottom: 1px solid #2a2825;
+}
+
+.who .sec-label { color: var(--accent); }
+
+.who .sec-title {
+  color: var(--paper);
+  margin-bottom: 40px;
+}
+
+.who-desc {
+  font-size: 17px;
+  color: rgba(244,241,235,0.65);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.who-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.who-tag {
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border: 1px solid rgba(244,241,235,0.2);
+  border-radius: 100px;
+  color: rgba(244,241,235,0.7);
+}
+
+/* ── CLIENTS ── */
+.clients {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.client-item {
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  min-height: 80px;
+}
+
+.client-item:nth-child(4n) { border-right: none; }
+.client-item:nth-last-child(-n+4) { border-bottom: none; }
+
+.client-item img {
+  height: 52px;
+  width: auto;
+  max-width: 160px;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.2s;
+  object-fit: contain;
+  display: block;
+}
+
+.client-item img.logo-text {
+  height: 28px;
+  max-width: 150px;
+}
+
+.client-item img:hover { filter: grayscale(0%) opacity(1); }
+
+.client-item span {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ── CREDENTIALS ── */
+.creds {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.creds-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.creds-block h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.course-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  align-items: stretch;
+}
+
+.course-item:last-child { border-bottom: none; }
+
+.course-year {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  padding: 14px 12px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.05em;
+}
+
+.course-name {
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 12px 16px;
+  color: var(--ink);
+}
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+}
+
+.tool-tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.tool-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── FAQ ── */
+.faq {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-list { border: 1px solid var(--border); }
+
+.faq-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  padding: 28px 32px;
+  border-right: 1px solid var(--border);
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+}
+
+.faq-a {
+  padding: 28px 32px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* ── CTA ── */
+.cta-final {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.cta-final .sec-label { justify-content: center; display: flex; }
+.cta-final .sec-title { margin: 0 auto 28px; text-align: center; }
+
+.cta-final p {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 420px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+footer p {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero .brand    { animation: fadeUp 0.5s ease 0.1s both; }
+.hero h1        { animation: fadeUp 0.6s ease 0.2s both; }
+.hero-desc      { animation: fadeUp 0.6s ease 0.35s both; }
+.hero-cta       { animation: fadeUp 0.6s ease 0.48s both; }
+
+/* ── MOBILE ── */
+@media (max-width: 680px) {
+  .container { padding: 0 20px; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .tile-wide { grid-column: span 2; }
+  .chain-layout { grid-template-columns: 1fr; }
+  .chain-arrow { height: 40px; width: 100%; }
+  .chain-arrow svg { transform: rotate(90deg); }
+  .chain-col.right .chain-item { transform: translateX(0); }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .client-item:nth-child(4n) { border-right: 1px solid var(--border); }
+  .client-item:nth-child(2n) { border-right: none; }
+  .entry-grid { grid-template-columns: 1fr; }
+  .creds-layout { grid-template-columns: 1fr; gap: 40px; }
+  .format { grid-template-columns: 1fr; }
+  .format-meta { border-right: none; border-bottom: 1px solid var(--border); }
+  .faq-item { grid-template-columns: 1fr; }
+  .faq-q { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="brand"><span class="do">до&thinsp;</span><span class="dig">digital</span></div>
+    <h1>Маркетинг<br><span>до рекламы</span></h1>
+    <p class="hero-desc">Продукт, аудитория, каналы, точки роста — то, что нужно проработать до запуска рекламы или усилить её.</p>
+    <a href="#entry" class="hero-cta">Посмотреть задачи</a>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what">
+  <div class="container">
+    <div class="sec-label">Что мы делаем</div>
+    <h2 class="sec-title">Конкретные работы, которые мы выполняем</h2>
+
+    <div class="tiles">
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <h4>Исследование аудитории</h4>
+        <p>JTBD-интервью, ABC-сегментация, понимание того, кто реально платит и почему.</p>
+      </div>
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+        </svg>
+        <h4>Работа с посадочными страницами</h4>
+        <p>Структура, сообщение, логика страницы под конкретный сегмент и задачу.</p>
+      </div>
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/>
+        </svg>
+        <h4>Growth-гипотезы</h4>
+        <p>Ищем, где бизнес может расти: продукт, аудитория, канал, оффер. Формулируем гипотезы, приоритизируем, проверяем.</p>
+      </div>
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <h4>Поиск product-market fit</h4>
+        <p>Где продукт совпадает с реальным запросом рынка — и как это зафиксировать.</p>
+      </div>
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        <h4>Поиск каналов дистрибуции</h4>
+        <p>Реклама, партнёры, продажи, комьюнити — смотрим, что подходит под задачу.</p>
+      </div>
+
+      <div class="tile">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 6h18M3 12h12M3 18h8"/><path d="M16 16l2 2 4-4"/>
+        </svg>
+        <h4>Структура предложения и воронки</h4>
+        <p>Что предлагать клиенту первым, что вторым. Как выстроить путь от лёгкого первого шага до основного продукта.</p>
+      </div>
+
+      <div class="tile tile-wide">
+        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h4>Партнёр в маркетинге — для команды и директора</h4>
+        <p>Думающий участник, которого можно взять на встречу с командой или собственником. Полезен и для директора по маркетингу как «вторая голова» по сложным задачам — и для бизнеса как взгляд снаружи.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHAIN: works → results -->
+<section class="chain">
+  <div class="container">
+    <div class="sec-label">Как устроена работа</div>
+    <h2 class="sec-title">Что смотрим — и что получается на выходе</h2>
+
+    <div class="chain-layout">
+
+      <div class="chain-col left">
+        <div class="chain-header">
+          <div class="chain-header-label">Что мы прорабатываем</div>
+        </div>
+        <div class="chain-items">
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Как сейчас упакован продукт и что говорит посадочная</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Кому показывается реклама и с каким сообщением</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Какие каналы уже пробовали и что сработало</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Кто реально покупает и почему — по данным или интервью</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Что хотят запустить и какая задача стоит сейчас</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chain-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+
+      <div class="chain-col right">
+        <div class="chain-header">
+          <div class="chain-header-label">Что получает бизнес</div>
+        </div>
+        <div class="chain-items">
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Понятно, кому и с каким сообщением запускать рекламу</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Посадочная страница скорректирована под конкретный сегмент</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Есть 2–3 гипотезы для проверки с понятным приоритетом</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Понятно, на какой канал обратить внимание следующим</p>
+          </div>
+          <div class="chain-item">
+            <div class="chain-dot"></div>
+            <p>Есть конкретный следующий шаг — не список рекомендаций</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY TASKS -->
+<section class="entry" id="entry">
+  <div class="container">
+    <div class="sec-label">С чего начать</div>
+    <h2 class="sec-title">Конкретные задачи — как точка входа</h2>
+
+    <div class="entry-grid">
+
+      <div class="entry-card">
+        <div class="entry-num">01</div>
+        <h4>Работа с аудиторией</h4>
+        <p>Исследуем, кто реально покупает и почему. Интервью, анализ, сегментация — в зависимости от того, что нужно.</p>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-num">02</div>
+        <h4>Посадочные страницы</h4>
+        <p>Аудит существующих или создание новых — под продукт, вебинар, запуск. Структура и текст под конкретную задачу.</p>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-num">03</div>
+        <h4>Структура предложения и воронки</h4>
+        <p>Разбираем, как выстроен путь клиента: что предлагаете первым, где теряются, как выстроить воронку от первого касания до покупки.</p>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-num">04</div>
+        <h4>Консультации</h4>
+        <p>Разговор про маркетинг и бизнес: что работает, что нет, куда двигаться дальше.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="formats" id="formats">
+  <div class="container">
+    <div class="sec-label">Форматы работы</div>
+    <h2 class="sec-title">Как мы можем работать вместе</h2>
+
+    <div class="formats-list">
+
+      <div class="format">
+        <div class="format-meta">
+          <span class="format-tag">Разовая</span>
+          <span class="format-name">Консультации</span>
+        </div>
+        <div class="format-body">
+          <p>Разбираем маркетинг: кто покупает, почему, где точка роста, что делать дальше. Конкретные приоритеты на выходе.</p>
+        </div>
+      </div>
+
+      <div class="format">
+        <div class="format-meta">
+          <span class="format-tag">Проект</span>
+          <span class="format-name">Подготовка и запуск</span>
+        </div>
+        <div class="format-body">
+          <p>Аудитория, гипотезы, посадочные страницы, каналы. Проходим весь цикл от понимания продукта до первых действий в рынке.</p>
+        </div>
+      </div>
+
+      <div class="format">
+        <div class="format-meta">
+          <span class="format-tag">Длинная работа</span>
+          <span class="format-name">Маркетинговый партнёр</span>
+        </div>
+        <div class="format-body">
+          <p>Регулярные встречи на 4–6 месяцев. Участие в решениях, разборы ситуаций, работа с командой.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="who">
+  <div class="container">
+    <div class="sec-label">С кем работаем</div>
+    <h2 class="sec-title">B2B-бизнес с тракцией</h2>
+    <p class="who-desc">Работаем с бизнесом, у которого уже есть клиенты и понимание откуда деньги — даже если небольшое.</p>
+    <div class="who-tags">
+      <span class="who-tag">SaaS-платформы</span>
+      <span class="who-tag">Учебные центры</span>
+      <span class="who-tag">Tech-продукты</span>
+      <span class="who-tag">B2B-услуги</span>
+      <span class="who-tag">Новые продукты внутри компании</span>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients">
+  <div class="container">
+    <div class="sec-label">Опыт работы</div>
+    <h2 class="sec-title" style="margin-bottom:36px">Среди клиентов</h2>
+    <div class="clients-grid">
+      <div class="client-item"><img src="лого/05.png" alt="Mail.ru"></div>
+      <div class="client-item"><img src="лого/12.png" alt="Yandex Cloud"></div>
+      <div class="client-item"><img src="лого/04.png" alt="Webinar"></div>
+      <div class="client-item"><img src="лого/bitrix24-logo-ru.svg" alt="Битрикс24" class="logo-text"></div>
+      <div class="client-item"><img src="лого/Skyeng_b2b_with_pref.png" alt="Skyeng b2b" class="logo-text"></div>
+      <div class="client-item"><img src="лого/Logo_BD_3_1.png" alt="BestDoctor" class="logo-text"></div>
+      <div class="client-item"><img src="лого/08.png" alt="МТТ"></div>
+      <div class="client-item"><img src="лого/01.png" alt="SmirnovTech"></div>
+      <div class="client-item"><img src="лого/07.png" alt="Корус Консалтинг"></div>
+      <div class="client-item"><img src="лого/03.png" alt="Ventra"></div>
+      <div class="client-item"><img src="лого/11.png" alt="PRICE"></div>
+      <div class="client-item"><img src="лого/10.png" alt="Grebenuk"></div>
+      <div class="client-item"><img src="лого/02.png" alt="Solar Staff"></div>
+      <div class="client-item"><img src="лого/06.png" alt="Cleverbots"></div>
+      <div class="client-item"><img src="лого/09.png" alt=".VISION"></div>
+      <div class="client-item"><img src="лого/vkusvill-logo-remove.png" alt="ВкусВилл" class="logo-text"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="creds">
+  <div class="container">
+    <div class="sec-label">Бэкграунд</div>
+    <h2 class="sec-title">Обучение и инструменты</h2>
+
+    <div class="creds-layout">
+
+      <div class="creds-block">
+        <h3>Курсы и программы</h3>
+        <div class="course-list">
+          <div class="course-item">
+            <div class="course-year">2026</div>
+            <div class="course-name">Как делать продукт — Иван Замесин</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2026</div>
+            <div class="course-name">Интенсив по вайб-кодингу — Иван Замесин</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2023</div>
+            <div class="course-name">Account-based marketing (ABM)</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2023</div>
+            <div class="course-name">Трекер бизнеса — Евгений Калинин</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2022</div>
+            <div class="course-name">Growth Marketing Manager — Epic Growth</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2020</div>
+            <div class="course-name">Управление продуктом на основе аналитики — Gopractice</div>
+          </div>
+          <div class="course-item">
+            <div class="course-year">2019</div>
+            <div class="course-name">CustDev — Иван Замесин</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creds-block">
+        <h3>Инструменты</h3>
+        <div class="tools-grid">
+          <div class="tool-tag"><span class="tool-dot"></span>Яндекс.Директ</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Telegram Ads</div>
+          <div class="tool-tag"><span class="tool-dot"></span>ВКонтакте</div>
+          <div class="tool-tag"><span class="tool-dot"></span>LinkedIn</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Tilda</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Email-рассылки</div>
+          <div class="tool-tag"><span class="tool-dot"></span>CRM-системы</div>
+          <div class="tool-tag"><span class="tool-dot"></span>JTBD-интервью</div>
+          <div class="tool-tag"><span class="tool-dot"></span>Claude Code + VS Code</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="sec-label">Вопросы</div>
+    <h2 class="sec-title">Частые сомнения</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">«Нам нужен результат, а не консалтинг»</div>
+        <div class="faq-a">Можем помочь с запуском сами или передать подрядчику и остаться рядом. Зависит от задачи.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">«Почему не рекламное агентство?»</div>
+        <div class="faq-a">Агентство заинтересовано в том, чтобы вы запустили рекламу. Мы — в том, чтобы она сработала. Иногда правильный ответ вообще не реклама.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">«У нас специфичный рынок»</div>
+        <div class="faq-a">Входим через разговор с вами и вашей командой. Специфику рынка изучаем в процессе — это не мешает работе.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="sec-label">Начать</div>
+    <h2 class="sec-title">Расскажите про свою задачу</h2>
+    <p>Поймём, с чего начать и какой формат подходит под вашу ситуацию.</p>
+    <a href="mailto:contact@krokon.ru" class="hero-cta">Написать нам</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p><span style="color:var(--muted);font-weight:400">до </span>digital</p>
+  </div>
+</footer>
+
+<script>
+// ── EDIT MODE ──
+(function() {
+  const btn = document.createElement('button');
+  btn.id = 'edit-btn';
+  btn.textContent = '✏️ Редактировать';
+  Object.assign(btn.style, {
+    position: 'fixed', bottom: '24px', right: '24px', zIndex: '9999',
+    fontFamily: 'Onest, sans-serif', fontSize: '13px', fontWeight: '600',
+    padding: '10px 20px', background: '#111', color: '#fff',
+    border: 'none', borderRadius: '4px', cursor: 'pointer',
+    boxShadow: '0 4px 16px rgba(0,0,0,0.2)', transition: 'background 0.2s'
+  });
+
+  let editing = false;
+  const selectors = 'h1, h2, h4, p, .sec-label, .sec-title, .format-name, .format-tag, .faq-q, .faq-a, .chain-item p, .entry-card p, .entry-card h4, .who-desc, .course-name, .hero-desc';
+
+  btn.addEventListener('click', () => {
+    editing = !editing;
+    document.querySelectorAll(selectors).forEach(el => {
+      el.contentEditable = editing;
+      el.style.outline = editing ? '2px dashed #c94d1a' : 'none';
+      el.style.borderRadius = editing ? '2px' : '';
+    });
+    btn.textContent = editing ? '✅ Готово' : '✏️ Редактировать';
+    btn.style.background = editing ? '#c94d1a' : '#111';
+    if (!editing) {
+      alert('Изменения видны только в браузере. Чтобы сохранить — скопируй нужный текст и скажи мне что поменять.');
+    }
+  });
+
+  document.body.appendChild(btn);
+})();
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.tile, .chain-item').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
