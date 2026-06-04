@@ -1097,7 +1097,9 @@ function copyEmail(el) {
   });
 }
 
-// ── EDIT MODE ──
+// ── EDIT MODE (отключён) ──
+// раскомментировать для редактирования:
+/*
 (function() {
   const btn = document.createElement('button');
   btn.id = 'edit-btn';
@@ -1134,6 +1136,7 @@ function copyEmail(el) {
 
   document.body.appendChild(btn);
 })();
+*/
 
 // ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
