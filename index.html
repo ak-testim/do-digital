@@ -159,12 +159,26 @@ body {
 }
 
 .tile h4 a {
-  color: inherit;
+  color: var(--accent);
   text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.tile h4 a::after {
+  content: '→';
+  font-size: 0.9em;
+  display: inline-block;
+  transition: transform 0.15s ease;
 }
 
 .tile h4 a:hover {
   text-decoration: underline;
+}
+
+.tile h4 a:hover::after {
+  transform: translateX(3px);
 }
 
 .tile p {
